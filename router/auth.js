@@ -20,7 +20,7 @@ router.post("/register", async (req, res) => {
   const { name, email, skill, ig_username, linkdin, twitter, github , password, cpassword} = req.body;
 
   if (!name || !email || !skill || !ig_username || !linkdin || !twitter || !github || !password || !cpassword ) {
-    return res.status(422).json({ error: "Please Fill the * field properly" });
+    return res.status(422).json({ error: "Please Fill the field properly" });
   }
 
   try {
