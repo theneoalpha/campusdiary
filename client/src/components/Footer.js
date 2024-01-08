@@ -1,5 +1,10 @@
 import React from 'react'
 import campus_diary_logo from"./img/campus_diary_logo.png";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import { Link } from "react-router-dom";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import EmailIcon from "@mui/icons-material/Email";
 
 export default function Footer(props) {
 
@@ -11,41 +16,57 @@ export default function Footer(props) {
             <div className="col-xl-3 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
               <h4>About Us</h4>
               <p>MYTHBUSTERS....</p>
-              <a className="navbar-brand logo_h d-none d-xl-block" href="index.html"><img src={campus_diary_logo} alt="campus_diary_logo" /></a>
+              <Link className="navbar-brand logo_h d-none d-xl-block" to="/"><img src={campus_diary_logo} alt="campus_diary_logo" /></Link>
             </div>
             <div className="col-xl-3 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
               <h4>Contact Info</h4>
               <ul>
                 <li>Address: Jagadalpur</li>
-                <li><a href>Phone: +91 12324343141</a></li>
-                <li><a href="https://www.google.co.in/">Email: MythBusters121@gmail.com</a></li>
+                <li><a to>Phone: +91 12324343141</a></li>
+                <Link><a to="https://www.google.co.in/">Email: MythBusters121@gmail.com</a></Link>
               </ul>
             </div>
             <div className="col-xl-2 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
               <h4>Important Link</h4>
               <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#">Community</a></li>
-                <li><a href="/view">View</a></li>
-                <li><a href="#">Events</a></li>
-                <li><a href="#">Explore</a></li>
-                <li><a href="#">About Us</a></li>
+                
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/notes">Notes</Link></li>
+                <li><Link to="/view">View</Link></li>
+                <li><Link to="#">Events</Link></li>
+                <li><Link to="#">Explore</Link></li>
+                <li><Link to="#">About Us</Link></li>
               </ul>
             </div>
             <div className="offset-xl-1 col-xl-3 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
               <h4>Blogs</h4>
-              <p><a href>Click here to Read Latest blogs</a></p>
+              <p><a to>Click here to Read Latest blogs</a></p>
             </div>
           </div>
           <div className="footer-bottom row align-items-center text-center text-lg-left">
             <p className="footer-text m-0 col-lg-8 col-md-12">
-              Copyright @2022 All rights reserved  - MythBusters
+              Copyright @2023 All rights reserved  - MythBusters
             </p>
             <div className="col-lg-4 col-md-12 text-center text-lg-right footer-social">
-              <a href="#"><i className="ti-facebook" /></a>
-              <a href="#"><i className="ti-twitter-alt" /></a>
-              <a href="#"><i className="ti-dribbble" /></a>
-              <a href="#"><i className="ti-linkedin" /></a>
+            
+                
+                  <a href="#">
+                    <InstagramIcon />
+                  </a>
+                
+                  <a href="#">
+                    <GitHubIcon />
+                  </a>
+               
+                  <a href="#">
+                    <LinkedInIcon />
+                  </a>
+                
+                  <a href="#">
+                    <EmailIcon />
+                  </a>
+                
+              
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "./Footer";
 import "../components/assets/navbar.css";
 import Navbar from './Navbar';
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
           <p className="text-uppercase">An Initiative</p>
           <h1>Know Your Seniors</h1>
           <p className="hero-subtitle">“The Spirit Never Ages. It Stays Forever Young.”</p>
-          <a className="button button-outline" href="/view">View</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a className="button button-outline " href="/register">Add Me</a>
+          <Link className="button button-outline" to="/view">View</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link className="button button-outline " to="/register">Add Me</Link>
         </div>
       </section>
 

@@ -17,6 +17,10 @@ body {
   background: linear-gradient(90deg, #1595b9 0%, #0e1e7a 100%);
 
 }
+.row {
+  display: flex;
+  margin: auto;
+}
 ul {
   list-style-type: none;
   margin: 0;

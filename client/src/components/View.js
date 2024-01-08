@@ -3,6 +3,7 @@ import React from 'react';
 import "../components/assets/section.css";
 import "../components/assets/style.css";
 // import "../components/assets/cards.css";
+import { Link } from "react-router-dom";
 import Footer from './Footer';
 import Navbar from './Navbar';
 import Year1 from"./images/year1.png";
@@ -33,7 +34,7 @@ export default function View() {
                 cells than you have today.
               </p>
             </figcaption>
-            <a href="/view/batch2125" />
+            <Link to="/view/batch2125" />
           </figure>
         </div>
         <div className="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -48,7 +49,7 @@ export default function View() {
                 unstoppable.
               </p>
             </figcaption>
-            <a href="/view/batch2024" />
+            <Link to="/view/batch2024" />
           </figure>
         </div>
         <div className="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -62,7 +63,7 @@ export default function View() {
                 Definiteness of purpose is the starting point of all achievement.
               </p>
             </figcaption>
-            <a href="/view/batch1923" />
+            <Link to="/view/batch1923" />
           </figure>
         </div>
         
