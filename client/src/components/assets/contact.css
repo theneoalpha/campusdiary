@@ -4,9 +4,8 @@
     padding: 0;
     box-sizing: border-box;
 } */
-.mb-4{
-    height: 80vh;
-}
+
+  @import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
 input{
     background-color: transparent;
     
@@ -30,6 +29,10 @@ body{
     border-radius: 3rem;  
     box-shadow: 0 20px 25px -5px rgba(0 0 0 / .10),
     0 10px 10px -5px rgba(0 0 0 / .04);
+}
+.container h1{
+    color:#d8d8d8a8;
+    font-family: 'Teko', sans-serif;
 }
 .form-title{
     color: purple;
@@ -91,4 +94,8 @@ body{
     
     }
        
+    .first, .second, .third {
+        
+        flex-direction: column;
+    }
 }

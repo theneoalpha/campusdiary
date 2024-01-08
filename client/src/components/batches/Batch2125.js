@@ -4,7 +4,11 @@ import Footer from '../Footer'
 import boy from"./image/boy.jpg";
 import girl from"./image/girl.jpg";
 import "../assets/cards.css";
-import "./batch.css"
+import "./batch.css";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import EmailIcon from "@mui/icons-material/Email";
 
 
 
@@ -25,21 +29,27 @@ export default function Batch2125() {
           <h4 className="title">Batch 2021-25(CE)</h4>
         </div>
         <ul className="social">
-          <li>
-            <a href="#">
-              <i className="fa fa-instagram" />
-            </a>
-          </li>
-          <li>
-            <a href="#" className="fa fa-twitter" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-envelope" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-linkedin" aria-hidden="true" />
-          </li>
-        </ul>
+                <li>
+                  <a href="#">
+                    <InstagramIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <GitHubIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <LinkedInIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <EmailIcon />
+                  </a>
+                </li>
+              </ul>
       </div>
     </div>
     <div className="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -52,21 +62,27 @@ export default function Batch2125() {
           <h4 className="title">Batch 2021-25(IT)</h4>
         </div>
         <ul className="social">
-          <li>
-            <a href="#">
-              <i className="fa fa-instagram" />
-            </a>
-          </li>
-          <li>
-            <a href="#" className="fa fa-twitter" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-envelope" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-linkedin" aria-hidden="true" />
-          </li>
-        </ul>
+                <li>
+                  <a href="#">
+                    <InstagramIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <GitHubIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <LinkedInIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <EmailIcon />
+                  </a>
+                </li>
+              </ul>
       </div>
     </div>
     <div className="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -79,21 +95,27 @@ export default function Batch2125() {
           <h4 className="title">Batch 2021-25(MIN)</h4>
         </div>
         <ul className="social">
-          <li>
-            <a href="#">
-              <i className="fa fa-instagram" />
-            </a>
-          </li>
-          <li>
-            <a href="#" className="fa fa-twitter" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-envelope" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-linkedin" aria-hidden="true" />
-          </li>
-        </ul>
+                <li>
+                  <a href="#">
+                    <InstagramIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <GitHubIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <LinkedInIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <EmailIcon />
+                  </a>
+                </li>
+              </ul>
       </div>
     </div>
     <div className="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -106,21 +128,27 @@ export default function Batch2125() {
           <h4 className="title">Batch 2021-25(CE)</h4>
         </div>
         <ul className="social">
-          <li>
-            <a href="#">
-              <i className="fa fa-instagram" />
-            </a>
-          </li>
-          <li>
-            <a href="#" className="fa fa-twitter" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-envelope" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-linkedin" aria-hidden="true" />
-          </li>
-        </ul>
+                <li>
+                  <a href="#">
+                    <InstagramIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <GitHubIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <LinkedInIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <EmailIcon />
+                  </a>
+                </li>
+              </ul>
       </div>
     </div>
     <div className="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -133,21 +161,27 @@ export default function Batch2125() {
           <h4 className="title">Batch 2021-25(MECH)</h4>
         </div>
         <ul className="social">
-          <li>
-            <a href="#">
-              <i className="fa fa-instagram" />
-            </a>
-          </li>
-          <li>
-            <a href="#" className="fa fa-twitter" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-envelope" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-linkedin" aria-hidden="true" />
-          </li>
-        </ul>
+                <li>
+                  <a href="#">
+                    <InstagramIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <GitHubIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <LinkedInIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <EmailIcon />
+                  </a>
+                </li>
+              </ul>
       </div>
     </div>
     <div className="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -160,21 +194,27 @@ export default function Batch2125() {
           <h4 className="title">Batch 2021-25(IT)</h4>
         </div>
         <ul className="social">
-          <li>
-            <a href="#">
-              <i className="fa fa-instagram" />
-            </a>
-          </li>
-          <li>
-            <a href="#" className="fa fa-twitter" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-envelope" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-linkedin" aria-hidden="true" />
-          </li>
-        </ul>
+                <li>
+                  <a href="#">
+                    <InstagramIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <GitHubIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <LinkedInIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <EmailIcon />
+                  </a>
+                </li>
+              </ul>
       </div>
     </div>
     <div className="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -187,21 +227,27 @@ export default function Batch2125() {
           <h4 className="title">Batch 2021-25(ECE)</h4>
         </div>
         <ul className="social">
-          <li>
-            <a href="#">
-              <i className="fa fa-instagram" />
-            </a>
-          </li>
-          <li>
-            <a href="#" className="fa fa-twitter" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-envelope" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-linkedin" aria-hidden="true" />
-          </li>
-        </ul>
+                <li>
+                  <a href="#">
+                    <InstagramIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <GitHubIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <LinkedInIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <EmailIcon />
+                  </a>
+                </li>
+              </ul>
       </div>
     </div>
     <div className="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -215,21 +261,27 @@ export default function Batch2125() {
           <h4 className="title">Batch 2021-25(EE)</h4>
         </div>
         <ul className="social">
-          <li>
-            <a href="#">
-              <i className="fa fa-instagram" />
-            </a>
-          </li>
-          <li>
-            <a href="#" className="fa fa-twitter" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-envelope" aria-hidden="true" />
-          </li>
-          <li>
-            <a href="#" className="fa fa-linkedin" aria-hidden="true" />
-          </li>
-        </ul>
+                <li>
+                  <a href="#">
+                    <InstagramIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <GitHubIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <LinkedInIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <EmailIcon />
+                  </a>
+                </li>
+              </ul>
       </div>
     </div>
   </div>

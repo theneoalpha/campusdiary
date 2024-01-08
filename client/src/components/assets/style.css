@@ -405,9 +405,7 @@ h3,
     margin-top: 27px;
     margin-bottom: 23px;
   }
-  .header_area .navbar {
-    background: #7676ff;
-  }
+ 
   .navbar-toggler[aria-expanded="false"] span:nth-child(2) {
     opacity: 1;
   }
@@ -2005,6 +2003,11 @@ h3,
   padding: 45px 0;
   margin-top: 50px;
 }
+@media (max-width: 575px){
+  .container{
+    width: 70%;
+  }
+} 
 @media (max-width: 414px) {
   .comments-area {
     padding: 50px 8px;

@@ -75,9 +75,10 @@ export default function Contact() {
   return (
     <>
       <Navbar />
+      
       <section className="contact">
         <div className="container mt-5">
-  
+  <h1>Enroll Now</h1>
           <div className="contact-content">
             <img src={contact} />
             <div className="contact-form">
@@ -149,7 +150,7 @@ export default function Contact() {
                       type="text"
                       name="twitter"
                       id="twitter"
-                      placeholder="Twitter Profile"
+                      placeholder="Batch ex.2020-24"
                       value={user.twitter}
                       onChange={handleInputs}
                     />
