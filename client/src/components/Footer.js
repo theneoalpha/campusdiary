@@ -45,7 +45,7 @@ export default function Footer(props) {
           </div>
           <div className="footer-bottom row align-items-center text-center text-lg-left">
             <p className="footer-text m-0 col-lg-8 col-md-12">
-              Copyright @2023 All rights reserved  - MythBusters
+              Copyright @2024 All rights reserved  - MythBusters
             </p>
             <div className="col-lg-4 col-md-12 text-center text-lg-right footer-social">
             

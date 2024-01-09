@@ -13,6 +13,8 @@ export default function Home() {
         <section className="hero-banner text-center">
         <div className="container">
           <p className="text-uppercase">An Initiative</p>
+          
+          
           <h1>Know Your Seniors</h1>
           <p className="hero-subtitle">“The Spirit Never Ages. It Stays Forever Young.”</p>
           <Link className="button button-outline" to="/view">View</Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link className="button button-outline " to="/register">Add Me</Link>

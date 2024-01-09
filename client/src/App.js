@@ -38,7 +38,8 @@ function App() {
             <Route path="/view/batch2125" element={<Batch2125/>} />
             <Route path="/view/batch2024" element={<Batch2024/>} />
             <Route path="/view/batch1923" element={<Batch1923/>} />
-
+            <Route path="/view/batch1923" element={<Batch1923/>} />
+            
           </Routes>
         
         </BrowserRouter>
