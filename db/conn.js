@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const DB ="mongodb+srv://theneoalpha:VikashKaushik@cluster0.cxmotro.mongodb.net/"
+const DB ="mongodb+srv://theneoalpha:VikashKaushik@cluster0.lqezs6z.mongodb.net/?retryWrites=true&w=majority"
 mongoose.connect(DB).then(()=>{
     console.log("Connection successul");
 }).catch((err)=>{
