@@ -29,7 +29,6 @@ function App() {
     <>
     
     <BrowserRouter>
-     
           <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/view" element={<View/>} />
@@ -39,9 +38,7 @@ function App() {
             <Route path="/view/batch2024" element={<Batch2024/>} />
             <Route path="/view/batch1923" element={<Batch1923/>} />
             <Route path="/view/batch1923" element={<Batch1923/>} />
-            
           </Routes>
-        
         </BrowserRouter>
     
     

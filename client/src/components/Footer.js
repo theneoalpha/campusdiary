@@ -21,9 +21,9 @@ export default function Footer(props) {
             <div className="col-xl-3 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
               <h4>Contact Info</h4>
               <ul>
-                <li>Address: Jagadalpur</li>
-                <li><a to>Phone: +91 12324343141</a></li>
-                <Link><a to="https://www.google.co.in/">Email: MythBusters121@gmail.com</a></Link>
+                <li>Address:Jagadalpur</li>
+                {/* <li><a to>Phone: +91 12324343141</a></li> */}
+                <Link><a to="mailto:campusdiary121@gmail.com">Email: campusdiary121@gmail.com</a></Link>
               </ul>
             </div>
             <div className="col-xl-2 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
@@ -45,7 +45,7 @@ export default function Footer(props) {
           </div>
           <div className="footer-bottom row align-items-center text-center text-lg-left">
             <p className="footer-text m-0 col-lg-8 col-md-12">
-              Copyright @2024 All rights reserved  - MythBusters
+              Copyright @2024 All rights reserved  - Campus Diary
             </p>
             <div className="col-lg-4 col-md-12 text-center text-lg-right footer-social">
             

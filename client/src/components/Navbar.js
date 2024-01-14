@@ -24,8 +24,8 @@ export default function Navbar() {
                   </li><li className="nav-item submenu dropdown">
                     <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Community</a>
                     <ul className="dropdown-menu">
-                      <li className="nav-item"><a className="nav-link" href="Community Page/community.html">Events</a>                 
-                      </li><li className="nav-item"><a className="nav-link" href="Community Page/community.html">Blogs</a>                 
+                      <li className="nav-item"><a className="nav-link" href="#">Events</a>                 
+                      </li><li className="nav-item"><a className="nav-link" href="#">Blogs</a>                 
                       </li></ul>
                   </li>
                   <li className="nav-item"><Link className="nav-link" to="#">About Us</Link></li>
