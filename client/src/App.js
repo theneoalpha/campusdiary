@@ -16,7 +16,7 @@ import {
   Route,
 } from "react-router-dom";
 import './App.css';
-
+import SignIn from './components/Signin';
 import Notes from './components/Notes';
 import Batch2125 from './components/batches/Batch2125';
 import View from './components/View';
@@ -38,6 +38,7 @@ function App() {
             <Route path="/view/batch2024" element={<Batch2024/>} />
             <Route path="/view/batch1923" element={<Batch1923/>} />
             <Route path="/view/batch1923" element={<Batch1923/>} />
+            <Route path="/signin" element={<SignIn/>} />
           </Routes>
         </BrowserRouter>
     

@@ -150,7 +150,7 @@ export default function Contact() {
                       type="text"
                       name="twitter"
                       id="twitter"
-                      placeholder="Batch"
+                      placeholder="Batch ex.2020-24"
                       value={user.twitter}
                       onChange={handleInputs}
                     />
@@ -201,13 +201,7 @@ export default function Contact() {
                     onClick={PostData}
                   />
                 </div>
-                <div>
-                <h6>* Batch is in the numeric form only eg. 2020-24</h6>
-                <h6>* If you don't have any social media account simply leave it blank.</h6>
-                <h6>" * " Fields are mandatory</h6>
-              </div>
               </form>
-              
             </div>
           </div>
         </div>
