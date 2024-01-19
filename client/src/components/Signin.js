@@ -1,56 +1,72 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
-import contact from "../images/boy.svg";
 import "../components/assets/contact.css";
 import Footer from "./Footer";
 
-export default function SignIn() {
-  const [credentials, setCredentials] = useState({
+export default function Signin() {
+  const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
   const handleInputs = (e) => {
-    const { name, value } = e.target;
-    setCredentials({ ...credentials, [name]: value });
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleSignIn = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // ...
+    const { email, password } = user;
+
+    // Make a POST request to the signin endpoint
+    const res = await fetch("/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await res.json();
+    if (res.status === 200) {
+      // Successful signin
+      console.log("Signin successful");
+      // Redirect to the dashboard or another page
+    } else {
+      // Failed signin
+      console.log("Invalid email or password");
+    }
   };
 
   return (
     <>
       <Navbar />
 
-      <section className="contact">
+      <section className="signin">
         <div className="container mt-5">
           <h1>Sign In</h1>
-          <div className="contact-content">
-            <img src={contact} alt="Contact" />
-            <div className="contact-form">
-              <form method="POST" className="contactpage-form">
+          <div className="signin-content">
+            <div className="signin-form">
+              <form method="POST" className="signin-page-form">
                 <div className="form-group">
                   <label htmlFor="email">Email</label>
                   <input
-                    type="email"
-                    id="email"
+                    type="text"
                     name="email"
-                    value={credentials.email}
+                    id="email"
+                    placeholder="Enter your email"
+                    value={user.email}
                     onChange={handleInputs}
-                    required
                   />
                 </div>
                 <div className="form-group">
                   <label htmlFor="password">Password</label>
                   <input
                     type="password"
-                    id="password"
                     name="password"
-                    value={credentials.password}
+                    id="password"
+                    placeholder="Enter your password"
+                    value={user.password}
                     onChange={handleInputs}
-                    required
                   />
                 </div>
                 <div className="form-group form-button">
@@ -59,7 +75,7 @@ export default function SignIn() {
                     name="signin"
                     value="Sign In"
                     className="submit"
-                    onClick={handleSignIn}
+                    onClick={handleSubmit}
                   />
                 </div>
               </form>
