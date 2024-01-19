@@ -1,122 +1,66 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
+const User = require('../model/userSchema');
 
-require("../db/conn");
-
-const User = require("../model/userSchema");
-
-router.use(express.json());
-router.use(express.urlencoded({ extended: true }));
-
-// router.get("/", (req,res)=>{
-//   res.send("Hellow");
-// })
-
-router.post("/register", async (req, res) => {
-  res.cookie("jwtoken","vikash");
-  const { name, email, skill, ig_username, linkdin, twitter, github , password, cpassword} = req.body;
-
-  if (!name || !email || !skill || !ig_username || !linkdin || !twitter || !github || !password || !cpassword ) {
-    return res.status(422).json({ error: "Please Fill the field properly" });
-  }
-
+// Register route
+router.post('/register', async (req, res) => {
   try {
-    const userExist = await User.findOne({ email: email });
-    if (userExist) {
-      return res.status(420).json({ error: "Email already Exist" });
-    } else if (password != cpassword) {
-      return res.status(400).json({ error: "Password Not Matched" });
+    const { name, email, password } = req.body;
+
+    // Check if the user already exists
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).json({ error: 'User already exists' });
     }
-    const user = new User({ name, skill, email, ig_username, linkdin, twitter, github, password, cpassword });
 
-    
-    const saveMethod = await user.save();
-    if (saveMethod) {
-       
-      res.status(201).json({ message: "User registered successfully" });
-      
-    
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Create a new user
+    const newUser = new User({
+      name,
+      email,
+      password: hashedPassword,
+    });
 
-      // res.get("/thankyou", (req, res) => {
-      //   res.send("thank You for Registration");
-      // });
+    // Save the user to the database
+    await newUser.save();
 
-    } else res.status(500).json({ message: "Failed to registered" });
-  } catch (err) {
-    console.log(err);
+    res.status(201).json({ message: 'User registered successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to register user' });
   }
 });
 
+// Login route
+router.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-// Login Router
- 
-router.post('/signin',async(req,res)=>{
- 
-try{
- 
- let token;
-    const {email,password} = req.body;
-
-    if(!email || !password){
-        return res.status(400).json({error:"Please Fill the data"})
-    }
-        const userLogin = await User.findOne({email:email})
-// res.json({message:"User Signin successfully"})
-    
-
-if(userLogin){
-    const isMatch = await bcrypt.compare(password,userLogin.password)
-
- token = await userLogin.generateAuthToken();
- console.log(token);
-
-
-res.cookie('jwtoken',token,{expires: new Date(Date.now()+25892000000), httpOnly:true });
-
-    if(!isMatch){
-      res.status(400).json({error:"Invalid credentials"})
-    }
-    else{
-      res.json({message:"User Signin Successfully"})
+    // Check if the user exists
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ error: 'Invalid credentials' });
     }
 
+    // Compare the password
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(400).json({ error: 'Invalid credentials' });
+    }
 
-}
-else{
-  res.status(400).json({error:"Invalid Credentials"})
-}
+    // Generate a JWT token
+    const token = jwt.sign({ userId: user._id }, 'thisisvikashkaushikandiamheretoincreptthedata');
 
-}
-catch(err){
-    console.log(err)
-}
-
-
-
-
-
-
-
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    res.status(200).json({ token });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to login' });
+  }
+});
 
 module.exports = router;
