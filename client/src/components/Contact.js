@@ -39,7 +39,7 @@ export default function Contact() {
     } = user;
 
     try {
-      const res = await axios.post('/api/register', {
+      const res = await axios.post('/register', {
         name,
         email,
         skill,
