@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Navbar from "./Navbar";
 import contact from "../images/boy.svg";
 import "../components/assets/contact.css";
-
 import Footer from "./Footer";
+
 export default function Contact() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -19,70 +20,55 @@ export default function Contact() {
     cpassword: "",
   });
 
-  let name, value, PostData;
   const handleInputs = (e) => {
-    console.log(e);
-    name = e.target.name;
-    value = e.target.value;
-
+    const { name, value } = e.target;
     setUser({ ...user, [name]: value });
+  };
 
-    PostData = async (e) => {
-      res.send("Hellow ths is vikash");
+  const PostData = async (e) => {
+    e.preventDefault();
 
-      e.preventDefault();
+    const { name, email, skill, ig_username, linkdin, twitter, github, password, cpassword } = user;
 
-      const {
+    try {
+      const res = await axios.post("http://localhost:5000/register", {
         name,
         email,
         skill,
         ig_username,
-        linkdin,
         twitter,
+        linkdin,
         github,
         password,
         cpassword,
-      } = user;
-      const res = await fetch("/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          skill,
-          ig_username,
-          twitter,
-          linkdin,
-          github,
-          password,
-          cpassword,
-        }),
       });
 
-      const data = await res.json();
-      if (res.status === 422 || !data) {
+      if (res.status === 201) {
+        window.alert("Registration successful");
+        console.log("Registration successful");
+        navigate("/thankyou");
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
         window.alert("Invalid Registration");
         console.log("Invalid Registration");
       } else {
-        window.alert("Registration successful");
-        console.log("registration successful");
+        window.alert("Something went wrong");
+        console.log("Something went wrong", error);
       }
-    };
+    }
   };
 
   return (
     <>
       <Navbar />
-      
       <section className="contact">
         <div className="container mt-5">
-  <h1>Enroll Now</h1>
+          <h1>Enroll Now</h1>
           <div className="contact-content">
-            <img src={contact} />
+            <img src={contact} alt="contact" />
             <div className="contact-form">
-              <form method="POST" className="contactpage-form">
+              <form method="POST" className="contactpage-form" onSubmit={PostData}>
                 <div className="first">
                   <div className="form-group">
                     <label htmlFor="name"></label>
@@ -106,7 +92,6 @@ export default function Contact() {
                       onChange={handleInputs}
                     />
                   </div>
-
                   <div className="form-group">
                     <label htmlFor="skill"></label>
                     <input
@@ -157,40 +142,40 @@ export default function Contact() {
                   </div>
                 </div>
                 <div className="third">
-                <div className="form-group">
-                  <label htmlFor="github"></label>
-                  <input
-                    type="text"
-                    name="github"
-                    id="github"
-                    placeholder="Github Profile"
-                    value={user.github}
-                    onChange={handleInputs}
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="github"></label>
+                    <input
+                      type="text"
+                      name="github"
+                      id="github"
+                      placeholder="Github Profile"
+                      value={user.github}
+                      onChange={handleInputs}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="password"></label>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="Password   *"
-                    value={user.password}
-                    onChange={handleInputs}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="cpassword"></label>
-                  <input
-                    type="password"
-                    name="cpassword"
-                    id="cpassword"
-                    placeholder="Confirm Password    *"
-                    value={user.cpassword}
-                    onChange={handleInputs}
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="password"></label>
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      placeholder="Password   *"
+                      value={user.password}
+                      onChange={handleInputs}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="cpassword"></label>
+                    <input
+                      type="password"
+                      name="cpassword"
+                      id="cpassword"
+                      placeholder="Confirm Password    *"
+                      value={user.cpassword}
+                      onChange={handleInputs}
+                    />
+                  </div>
                 </div>
                 <div className="form-group form-button">
                   <input
@@ -198,21 +183,18 @@ export default function Contact() {
                     name="contact"
                     value="Submit"
                     className="submit"
-                    onClick={PostData}
                   />
                 </div>
                 <div>
-                <h6>* Batch is in the numeric form only eg. 2020-24</h6>
-                <h6>* If you don't have any social media account simply leave it blank.</h6>
-                <h6>" * " Fields are mandatory</h6>
-              </div>
+                  <h6>* Batch is in the numeric form only eg. 2020-24</h6>
+                  <h6>* If you don't have any social media account simply leave it blank.</h6>
+                  <h6>" * " Fields are mandatory</h6>
+                </div>
               </form>
-              
             </div>
           </div>
         </div>
       </section>
-
       <Footer />
     </>
   );

@@ -1,122 +1,69 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
+const User = require('../model/userSchema');
 
-
-require("../db/conn");
-
-const User = require("../model/userSchema");
-
+router.use(cookieParser());
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
-// router.get("/", (req,res)=>{
-//   res.send("Hellow");
-// })
+// Register Route
+router.post('/register', async (req, res) => {
+  const { name, email, skill, ig_username, linkdin, twitter, github, password, cpassword } = req.body;
 
-router.post("/register", async (req, res) => {
-  res.cookie("jwtoken","vikash");
-  const { name, email, skill, ig_username, linkdin, twitter, github , password, cpassword} = req.body;
-
-  if (!name || !email || !skill || !ig_username || !linkdin || !twitter || !github || !password || !cpassword ) {
-    return res.status(422).json({ error: "Please Fill the field properly" });
+  if (!name || !email || !skill || !password || !cpassword) {
+    return res.status(422).json({ error: 'Please fill all required fields' });
   }
 
   try {
-    const userExist = await User.findOne({ email: email });
+    const userExist = await User.findOne({ email });
     if (userExist) {
-      return res.status(420).json({ error: "Email already Exist" });
-    } else if (password != cpassword) {
-      return res.status(400).json({ error: "Password Not Matched" });
+      return res.status(420).json({ error: 'Email already exists' });
     }
-    const user = new User({ name, skill, email, ig_username, linkdin, twitter, github, password, cpassword });
 
-    
-    const saveMethod = await user.save();
-    if (saveMethod) {
-       
-      res.status(201).json({ message: "User registered successfully" });
-      
-    
+    if (password !== cpassword) {
+      return res.status(400).json({ error: 'Passwords do not match' });
+    }
 
+    const user = new User({ name, email, skill, ig_username, linkdin, twitter, github, password });
+    await user.save();
 
-      // res.get("/thankyou", (req, res) => {
-      //   res.send("thank You for Registration");
-      // });
-
-    } else res.status(500).json({ message: "Failed to registered" });
+    res.status(201).json({ message: 'User registered successfully' });
   } catch (err) {
     console.log(err);
+    res.status(500).json({ error: 'Failed to register' });
   }
 });
 
+// Login Route
+router.post('/signin', async (req, res) => {
+  const { email, password } = req.body;
 
-// Login Router
- 
-router.post('/signin',async(req,res)=>{
- 
-try{
- 
- let token;
-    const {email,password} = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Please fill all fields' });
+  }
 
-    if(!email || !password){
-        return res.status(400).json({error:"Please Fill the data"})
-    }
-        const userLogin = await User.findOne({email:email})
-// res.json({message:"User Signin successfully"})
-    
-
-if(userLogin){
-    const isMatch = await bcrypt.compare(password,userLogin.password)
-
- token = await userLogin.generateAuthToken();
- console.log(token);
-
-
-res.cookie('jwtoken',token,{expires: new Date(Date.now()+25892000000), httpOnly:true });
-
-    if(!isMatch){
-      res.status(400).json({error:"Invalid credentials"})
-    }
-    else{
-      res.json({message:"User Signin Successfully"})
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ error: 'Invalid credentials' });
     }
 
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ error: 'Invalid credentials' });
+    }
 
-}
-else{
-  res.status(400).json({error:"Invalid Credentials"})
-}
+    const token = user.generateAuthToken();
+    res.cookie('jwtoken', token, { expires: new Date(Date.now() + 25892000000), httpOnly: true });
 
-}
-catch(err){
-    console.log(err)
-}
-
-
-
-
-
-
-
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    res.json({ message: 'User signed in successfully' });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: 'Failed to sign in' });
+  }
+});
 
 module.exports = router;

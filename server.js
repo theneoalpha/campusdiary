@@ -1,67 +1,27 @@
-const express = require ("express");
-const app = express();
-const mongoose = require ("mongoose");
-const path = require('path');
-const dotenv = require("dotenv");
-dotenv.config({path:'./config.env'})
-require("./db/conn.js");
+const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const cors = require('cors');
 
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+const DB = process.env.DB;
+
+mongoose.set('strictQuery', true);
+mongoose.connect(DB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  console.log('Connection successful');
+}).catch((err) => {
+  console.error('No connection', err);
+});
+
+app.use(cors());
 app.use(express.json());
 
+app.use('/api', require('./router/auth'));
 
-const Users = require('./model/userSchema');
-
-app.use(require('./router/auth'))
-
-const PORT = process.env.PORT || 8000;
-
-
-// if(process.env.NODE_ENV == 'production'){
-//     app.use(express.static("client/build"));
-// }
-
-
-
-//Lets try it
-// if(process.env.NODE.ENV === 'production') {
-//     app.use(express.static(path.join(__dirname, 'client', 'build')));
-  
-//     app.get('*', (req, res) => {
-//       res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
-//     });
-    
-//   }
-
-
-//another attempt
-
-__dirname = path.resolve();
-// if(process.env.NODE_ENV === 'production'){
-//     app.use(express.static(path.join(__dirname,'./client/build')));
-//     app.get('*',(req,res)=>{
-//         res.sendFile(path.resolve(__dirname,'client','build','index.html'));
-//     })
-   
-   
-//  }
-
-
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static(path.join(__dirname,'/client/build')))
-    app.get('*',(req,res)=>{
-        res.sendFile(path.resolve(__dirname,"client","build","index.html"))
-    })
-}
-
-else{
-    app.get("/",(req,res)=>{
-        res.send("API is running...");
-    })
-
-}
-
-
-
-app.listen(PORT,()=>{
-console.log("Listening at port 5000");
-});
+module.exports = app; 

@@ -1,6 +1,19 @@
 {
-    "version": 2,
-    "name": "native-server",
-    "builds": [{ "src": "server.js", "use": "@vercel/node" }],
-    "routes": [{ "src": "/(.*)", "dest": "/server.js" }]
-  }
+  "version": 2,
+  "name": "campusdiary",
+  "builds": [
+    {
+      "src": "campusdiary/server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "client/build" }
+    }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/campusdiary/server.js" },
+    { "src": "/(.*)", "dest": "/client/$1" }
+  ]
+}
