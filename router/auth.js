@@ -37,33 +37,6 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Login Route
-router.post('/signin', async (req, res) => {
-  const { email, password } = req.body;
 
-  if (!email || !password) {
-    return res.status(400).json({ error: 'Please fill all fields' });
-  }
-
-  try {
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ error: 'Invalid credentials' });
-    }
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ error: 'Invalid credentials' });
-    }
-
-    const token = user.generateAuthToken();
-    res.cookie('jwtoken', token, { expires: new Date(Date.now() + 25892000000), httpOnly: true });
-
-    res.json({ message: 'User signed in successfully' });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: 'Failed to sign in' });
-  }
-});
 
 module.exports = router;
