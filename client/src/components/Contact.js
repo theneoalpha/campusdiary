@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from "./Navbar";
 import contact from "../images/boy.svg";
@@ -7,7 +6,6 @@ import "../components/assets/contact.css";
 import Footer from "./Footer";
 
 export default function Contact() {
-  const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -28,16 +26,26 @@ export default function Contact() {
   const PostData = async (e) => {
     e.preventDefault();
 
-    const { name, email, skill, ig_username, linkdin, twitter, github, password, cpassword } = user;
+    const {
+      name,
+      email,
+      skill,
+      ig_username,
+      linkdin,
+      twitter,
+      github,
+      password,
+      cpassword,
+    } = user;
 
     try {
-      const res = await axios.post("http://localhost:5000/register", {
+      const res = await axios.post('/api/register', {
         name,
         email,
         skill,
         ig_username,
-        twitter,
         linkdin,
+        twitter,
         github,
         password,
         cpassword,
@@ -46,16 +54,13 @@ export default function Contact() {
       if (res.status === 201) {
         window.alert("Registration successful");
         console.log("Registration successful");
-        navigate("/thankyou");
-      }
-    } catch (error) {
-      if (error.response && error.response.status === 422) {
+      } else {
         window.alert("Invalid Registration");
         console.log("Invalid Registration");
-      } else {
-        window.alert("Something went wrong");
-        console.log("Something went wrong", error);
       }
+    } catch (error) {
+      console.error("There was an error!", error);
+      window.alert("Error occurred");
     }
   };
 
@@ -66,9 +71,9 @@ export default function Contact() {
         <div className="container mt-5">
           <h1>Enroll Now</h1>
           <div className="contact-content">
-            <img src={contact} alt="contact" />
+            <img src={contact} alt="contact illustration" />
             <div className="contact-form">
-              <form method="POST" className="contactpage-form" onSubmit={PostData}>
+              <form method="POST" className="contactpage-form">
                 <div className="first">
                   <div className="form-group">
                     <label htmlFor="name"></label>
@@ -92,6 +97,7 @@ export default function Contact() {
                       onChange={handleInputs}
                     />
                   </div>
+
                   <div className="form-group">
                     <label htmlFor="skill"></label>
                     <input
@@ -123,7 +129,7 @@ export default function Contact() {
                       type="text"
                       name="linkdin"
                       id="linkdin"
-                      placeholder="Linkdin Profile"
+                      placeholder="LinkedIn Profile"
                       value={user.linkdin}
                       onChange={handleInputs}
                     />
@@ -183,6 +189,7 @@ export default function Contact() {
                     name="contact"
                     value="Submit"
                     className="submit"
+                    onClick={PostData}
                   />
                 </div>
                 <div>
