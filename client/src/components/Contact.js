@@ -1,49 +1,38 @@
 import React, { useState } from "react";
-// import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Navbar from "./Navbar";
 import contact from "../images/boy.svg";
 import "../components/assets/contact.css";
-
 import Footer from "./Footer";
+import LinkedIn from "@mui/icons-material/LinkedIn";
+
 export default function Contact() {
-  // const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
     email: "",
     skill: "",
     ig_username: "",
-    linkdin: "",
-    twitter: "",
-    github: "",
-    password: "",
-    cpassword: "",
+    linkedIn:"",
+    twitter:"",
+    github:"",
+    password:"",
+    cpassword:""
+    
+    
   });
 
-  let name, value, PostData;
   const handleInputs = (e) => {
-    console.log(e);
-    name = e.target.name;
-    value = e.target.value;
-
+    const { name, value } = e.target;
     setUser({ ...user, [name]: value });
+  };
 
-    PostData = async (e) => {
-      res.send("Hellow ths is vikash");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-      e.preventDefault();
+    const { name,  email, skill, ig_username, linkdin, twitter, github, password, cpassword } = user;
 
-      const {
-        name,
-        email,
-        skill,
-        ig_username,
-        linkdin,
-        twitter,
-        github,
-        password,
-        cpassword,
-      } = user;
-      const res = await fetch("/register", {
+    try {
+      const res = await fetch("/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,34 +42,38 @@ export default function Contact() {
           email,
           skill,
           ig_username,
-          twitter,
           linkdin,
+          twitter,
           github,
           password,
-          cpassword,
+          cpassword
+          
         }),
       });
 
       const data = await res.json();
+
       if (res.status === 422 || !data) {
-        window.alert("Invalid Registration");
-        console.log("Invalid Registration");
+        window.alert("Invalid Message");
+        console.log("Invalid Message");
       } else {
-        window.alert("Registration successful");
-        console.log("registration successful");
+        window.alert("User Registered Successfully");
+        
+        console.log("User Registered Successfully");
       }
-    };
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <>
       <Navbar />
-      
       <section className="contact">
         <div className="container mt-5">
-  <h1>Enroll Now</h1>
+          <h1>Enroll Now</h1>
           <div className="contact-content">
-            <img src={contact} />
+            <img src={contact} alt="contact illustration" />
             <div className="contact-form">
               <form method="POST" className="contactpage-form">
                 <div className="first">
@@ -138,7 +131,7 @@ export default function Contact() {
                       type="text"
                       name="linkdin"
                       id="linkdin"
-                      placeholder="Linkdin Profile"
+                      placeholder="LinkedIn Profile"
                       value={user.linkdin}
                       onChange={handleInputs}
                     />
@@ -157,40 +150,40 @@ export default function Contact() {
                   </div>
                 </div>
                 <div className="third">
-                <div className="form-group">
-                  <label htmlFor="github"></label>
-                  <input
-                    type="text"
-                    name="github"
-                    id="github"
-                    placeholder="Github Profile"
-                    value={user.github}
-                    onChange={handleInputs}
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="github"></label>
+                    <input
+                      type="text"
+                      name="github"
+                      id="github"
+                      placeholder="Github Profile"
+                      value={user.github}
+                      onChange={handleInputs}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="password"></label>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="Password   *"
-                    value={user.password}
-                    onChange={handleInputs}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="cpassword"></label>
-                  <input
-                    type="password"
-                    name="cpassword"
-                    id="cpassword"
-                    placeholder="Confirm Password    *"
-                    value={user.cpassword}
-                    onChange={handleInputs}
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="password"></label>
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      placeholder="Password   *"
+                      value={user.password}
+                      onChange={handleInputs}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="cpassword"></label>
+                    <input
+                      type="password"
+                      name="cpassword"
+                      id="cpassword"
+                      placeholder="Confirm Password    *"
+                      value={user.cpassword}
+                      onChange={handleInputs}
+                    />
+                  </div>
                 </div>
                 <div className="form-group form-button">
                   <input
@@ -198,21 +191,19 @@ export default function Contact() {
                     name="contact"
                     value="Submit"
                     className="submit"
-                    onClick={PostData}
+                    onClick={handleSubmit}
                   />
                 </div>
                 <div>
-                <h6>* Batch is in the numeric form only eg. 2020-24</h6>
-                <h6>* If you don't have any social media account simply leave it blank.</h6>
-                <h6>" * " Fields are mandatory</h6>
-              </div>
+                  <h6>* Batch is in the numeric form only eg. 2020-24</h6>
+                  <h6>* If you don't have any social media account simply leave it blank.</h6>
+                  <h6>" * " Fields are mandatory</h6>
+                </div>
               </form>
-              
             </div>
           </div>
         </div>
       </section>
-
       <Footer />
     </>
   );
