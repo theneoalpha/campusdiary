@@ -10,7 +10,11 @@ const userSchema = new mongoose.Schema({
   linkdin: { type: String },
   twitter: { type: String },
   github: { type: String },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  cpassword:{
+    type:String,
+    required:true
+},
 });
 
 userSchema.pre('save', async function (next) {

@@ -12,7 +12,7 @@ router.use(express.urlencoded({ extended: true }));
 router.post("/register", async (req, res) => {
   const { name, email, skill, ig_username, linkdin, twitter, github, password, cpassword } = req.body;
 
-  if (!name || !email || !skill || !ig_username || !linkdin || !twitter || !github || !password || !cpassword) {
+  if (!name || !email || !skill  || !password || !cpassword) {
     return res.status(422).json({ error: "Please fill in all the fields" });
   }
 

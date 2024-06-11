@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import contact from "../images/boy.svg";
 import "../components/assets/contact.css";
 import Footer from "./Footer";
+import LinkedIn from "@mui/icons-material/LinkedIn";
 
 export default function Contact() {
   const [user, setUser] = useState({
@@ -11,11 +12,13 @@ export default function Contact() {
     email: "",
     skill: "",
     ig_username: "",
-    linkdin: "",
-    twitter: "",
-    github: "",
-    password: "",
-    cpassword: "",
+    linkedIn:"",
+    twitter:"",
+    github:"",
+    password:"",
+    cpassword:""
+    
+    
   });
 
   const handleInputs = (e) => {
@@ -23,44 +26,43 @@ export default function Contact() {
     setUser({ ...user, [name]: value });
   };
 
-  const PostData = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const {
-      name,
-      email,
-      skill,
-      ig_username,
-      linkdin,
-      twitter,
-      github,
-      password,
-      cpassword,
-    } = user;
+    const { name,  email, skill, ig_username, linkdin, twitter, github, password, cpassword } = user;
 
     try {
-      const res = await axios.post('/register', {
-        name,
-        email,
-        skill,
-        ig_username,
-        linkdin,
-        twitter,
-        github,
-        password,
-        cpassword,
+      const res = await fetch("/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          skill,
+          ig_username,
+          linkdin,
+          twitter,
+          github,
+          password,
+          cpassword
+          
+        }),
       });
 
-      if (res.status === 201) {
-        window.alert("Registration successful");
-        console.log("Registration successful");
+      const data = await res.json();
+
+      if (res.status === 422 || !data) {
+        window.alert("Invalid Message");
+        console.log("Invalid Message");
       } else {
-        window.alert("Invalid Registration");
-        console.log("Invalid Registration");
+        window.alert("User Registered Successfully");
+        
+        console.log("User Registered Successfully");
       }
     } catch (error) {
-      console.error("There was an error!", error);
-      window.alert("Error occurred");
+      console.log(error);
     }
   };
 
@@ -189,7 +191,7 @@ export default function Contact() {
                     name="contact"
                     value="Submit"
                     className="submit"
-                    onClick={PostData}
+                    onClick={handleSubmit}
                   />
                 </div>
                 <div>
