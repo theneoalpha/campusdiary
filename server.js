@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require ("mongoose");
 const path = require('path');
 const dotenv = require("dotenv");
-dotenv.config({path:'./process.env'})
+dotenv.config({path:'./config.env'})
 require("./db/conn.js");
 
 app.use(express.json());
@@ -19,6 +19,8 @@ const PORT = process.env.PORT || 8000;
 // if(process.env.NODE_ENV == 'production'){
 //     app.use(express.static("client/build"));
 // }
+
+
 
 //Lets try it
 // if(process.env.NODE.ENV === 'production') {
