@@ -3,7 +3,7 @@ import logo from './logo.svg';
 
 import React  from 'react';
 
-import Navbar2 from './components/Navbar2';
+
 import Home from './components/Home';
 
 // import Footer from './components/Footer';

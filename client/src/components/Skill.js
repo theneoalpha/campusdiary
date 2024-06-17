@@ -1,11 +1,12 @@
 import React from "react";
 import "../components/assets/skill.css";
-import Navbar2 from "./Navbar2";
+import Navbar from "./Navbar.js";
+
 import Footer from "./Footer";
 export default function Skill() {
   return (
     <>
-      <Navbar2 />
+      <Navbar />
       <h1 className="skillTitle">My Skills</h1>
       <div className="skillFirst">
         <div className="card">
