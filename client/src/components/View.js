@@ -21,7 +21,20 @@ export default function View() {
     <br />
     <div className="container">
       <div className="row">
-        
+      <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+          <figure className="snip1527">
+            <div className="image">
+              <img src={Year1} alt="pr-sample25" />
+            </div>
+            <figcaption>
+              <h3>Batch 2022-2026</h3>
+              <p>
+                Definiteness of purpose is the starting point of all achievement.
+              </p>
+            </figcaption>
+            <Link to="/view/batch2226" />
+          </figure>
+        </div>
         <div className="col-12 col-sm-6 col-md-4 col-lg-3">
           <figure className="snip1527">
             <div className="image">
@@ -52,20 +65,7 @@ export default function View() {
             <Link to="/view/batch2024" />
           </figure>
         </div>
-        <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-          <figure className="snip1527">
-            <div className="image">
-              <img src={Year1} alt="pr-sample25" />
-            </div>
-            <figcaption>
-              <h3>Batch 2019-2023</h3>
-              <p>
-                Definiteness of purpose is the starting point of all achievement.
-              </p>
-            </figcaption>
-            <Link to="/view/batch1923" />
-          </figure>
-        </div>
+       
         
        
         

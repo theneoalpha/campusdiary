@@ -21,7 +21,7 @@ import Notes from './components/Notes';
 import Batch2125 from './components/batches/Batch2125';
 import View from './components/View';
 import Batch2024 from './components/batches/Batch2024';
-import Batch1923 from './components/batches/Batch1923';
+import Batch2226 from './components/batches/Batch2226';
 
 
 function App() {
@@ -36,8 +36,8 @@ function App() {
             <Route path="/notes" element={<Notes/>} />
             <Route path="/view/batch2125" element={<Batch2125/>} />
             <Route path="/view/batch2024" element={<Batch2024/>} />
-            <Route path="/view/batch1923" element={<Batch1923/>} />
-            <Route path="/view/batch1923" element={<Batch1923/>} />
+            <Route path="/view/batch2226" element={<Batch2226/>} />
+         
           </Routes>
         </BrowserRouter>
     

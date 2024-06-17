@@ -28,7 +28,7 @@ export default function Contact() {
     setUser({ ...user, [name]: value });
 
     PostData = async (e) => {
-      res.send("Hellow ths is vikash");
+     
 
       e.preventDefault();
 

@@ -1,67 +1,31 @@
-const express = require ("express");
+const express = require('express');
+const axios = require('axios');
 const app = express();
-const mongoose = require ("mongoose");
-const path = require('path');
-const dotenv = require("dotenv");
-dotenv.config({path:'./config.env'})
-require("./db/conn.js");
+const PORT = 3000;
 
-app.use(express.json());
+const accessToken = 'EAAGESZChSZCuwBO3cYQjNBs7RxsCxSF3X0EcX5RMRPwEI2whuMnxF3lnpyf8ZCZCk61QxBU7kZCBkPZC3c9Mp6RrfcE6lGGZBdOpJjE2GQYoqs5xh6rpI9ZBmsBF50ZAAZCgQZC91O2kjPEbVB6aeabmynFToAhoTjqYw0ULnx3PaXjuCfC3wAhxHEIZAHjQaLZB6yqMp7ojhRwSn11Hg3D6G0DsZD';
 
+async function getInstagramProfilePicture(accessToken) {
+    const url = `https://graph.instagram.com/me?fields=id,theneoalpha,profile_picture_url&access_token=${accessToken}`;
 
-const Users = require('./model/userSchema');
-
-app.use(require('./router/auth'))
-
-const PORT = process.env.PORT || 8000;
-
-
-// if(process.env.NODE_ENV == 'production'){
-//     app.use(express.static("client/build"));
-// }
-
-
-
-//Lets try it
-// if(process.env.NODE.ENV === 'production') {
-//     app.use(express.static(path.join(__dirname, 'client', 'build')));
-  
-//     app.get('*', (req, res) => {
-//       res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
-//     });
-    
-//   }
-
-
-//another attempt
-
-__dirname = path.resolve();
-// if(process.env.NODE_ENV === 'production'){
-//     app.use(express.static(path.join(__dirname,'./client/build')));
-//     app.get('*',(req,res)=>{
-//         res.sendFile(path.resolve(__dirname,'client','build','index.html'));
-//     })
-   
-   
-//  }
-
-
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static(path.join(__dirname,'/client/build')))
-    app.get('*',(req,res)=>{
-        res.sendFile(path.resolve(__dirname,"client","build","index.html"))
-    })
+    try {
+        const response = await axios.get(url);
+        return response.data.profile_picture_url;
+    } catch (error) {
+        console.error('Error fetching profile picture:', error);
+        return null;
+    }
 }
 
-else{
-    app.get("/",(req,res)=>{
-        res.send("API is running...");
-    })
+app.get('/profile-picture', async (req, res) => {
+    const profilePictureUrl = await getInstagramProfilePicture(accessToken);
+    if (profilePictureUrl) {
+        res.send(`<img src="${profilePictureUrl}" alt="Profile Picture" />`);
+    } else {
+        res.send('Error fetching profile picture.');
+    }
+});
 
-}
-
-
-
-app.listen(PORT,()=>{
-console.log("Listening at port 5000");
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
