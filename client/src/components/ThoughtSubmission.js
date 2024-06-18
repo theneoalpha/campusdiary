@@ -4,30 +4,39 @@ import Navbar from "./Navbar.js";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 
-function ThoughtSubmission() {
+export default function ThoughtSubmission() {
   const [content, setContent] = useState('');
   const [message, setMessage] = useState('');
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    
+
     try {
-      const response = await fetch('/thought', { // Adjust the port if necessary
-        method: 'POST',
+      const res = await fetch("/thought", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ content }),
+        body: JSON.stringify({
+         content
+        }),
       });
 
-      if (response.ok) {
-        setMessage('Thought shared successfully!');
-        setContent('');
+      const data = await res.json();
+
+      if (res.status === 422 || !data) {
+        window.alert("Invalid Message");
+        console.log("Invalid Message");
       } else {
-        setMessage('Failed to share thought');
+        window.alert("Succesfully Posted in Community");
+        
+        console.log("Succesfully Posted in Community");
       }
     } catch (error) {
-      console.error('Error:', error);
-      setMessage("An error is occured");
+      console.log(error);
     }
   };
 
@@ -53,6 +62,5 @@ function ThoughtSubmission() {
     <Footer/>
     </>
   );
-}
+};
 
-export default ThoughtSubmission;
