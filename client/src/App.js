@@ -9,6 +9,8 @@ import Home from './components/Home';
 // import Footer from './components/Footer';
 import Skill from './components/Skill';
 import Contact from './components/Contact';
+import ThoughtSubmission from "./components/ThoughtSubmission";
+import ThoughtList from "./components/ThoughtList";
 
 import {
   BrowserRouter,
@@ -38,6 +40,8 @@ function App() {
             <Route path="/view/batch2024" element={<Batch2024/>} />
             <Route path="/view/batch1923" element={<Batch1923/>} />
             <Route path="/view/batch1923" element={<Batch1923/>} />
+            <Route path="/thought" element={<ThoughtSubmission/>} />
+            <Route path="/thoughts" element={<ThoughtList/>} />
           </Routes>
         </BrowserRouter>
     

@@ -1,10 +1,11 @@
 // ThoughtList.js
 import "../components/assets/thoughts.css";
 import Footer from './Footer';
-import experts from "./img/experts.svg";
+
 import Navbar from './Navbar';
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
+import experts from "./img/experts.svg";
 
 const ThoughtList = () => {
     const [thoughts, setThoughts] = useState([]);
